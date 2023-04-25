@@ -470,23 +470,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jonathan\\.nuget\\packages\\": {},
+    "C:\\Users\\ameli\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jonathan\\source\\repos\\Debrid_Skeleton\\Debrid_Skeleton.csproj",
+      "projectUniqueName": "C:\\Users\\ameli\\Documents\\######___SCHOOL___######\\Debrid_Skeleton\\Debrid_Skeleton\\Debrid_Skeleton.csproj",
       "projectName": "Debrid_Skeleton",
-      "projectPath": "C:\\Users\\Jonathan\\source\\repos\\Debrid_Skeleton\\Debrid_Skeleton.csproj",
-      "packagesPath": "C:\\Users\\Jonathan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jonathan\\source\\repos\\Debrid_Skeleton\\obj\\",
+      "projectPath": "C:\\Users\\ameli\\Documents\\######___SCHOOL___######\\Debrid_Skeleton\\Debrid_Skeleton\\Debrid_Skeleton.csproj",
+      "packagesPath": "C:\\Users\\ameli\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ameli\\Documents\\######___SCHOOL___######\\Debrid_Skeleton\\Debrid_Skeleton\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jonathan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ameli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
