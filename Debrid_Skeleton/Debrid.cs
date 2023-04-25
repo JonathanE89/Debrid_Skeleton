@@ -19,7 +19,7 @@ namespace Debrid_Skeleton
 
         private void getLink_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This is a test of the Debrid!");
+            MessageBox.Show("Getting Link from Text Box");
         }
 
         private void account_button_Click(object sender, EventArgs e)
@@ -58,6 +58,11 @@ namespace Debrid_Skeleton
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Link_Textbox_TextChanged(object sender, EventArgs e)
         {
 
         }

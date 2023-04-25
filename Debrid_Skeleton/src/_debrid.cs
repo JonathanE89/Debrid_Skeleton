@@ -8,6 +8,11 @@ namespace Debrid_Skeleton.src
 {
     internal class Debrid
     {
+        private string text_query;
 
+        public void getTextQuery(string text)
+        {
+
+        }
     }
 }
