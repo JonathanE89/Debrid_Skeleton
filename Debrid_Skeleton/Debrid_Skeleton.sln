@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debrid_Skeleton", "Debrid_Skeleton.csproj", "{EDA63DFF-DBEE-4AA0-9F21-CC061244D8CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DE2542E-BCAC-4271-8DDD-FD58B1BE6835}"
+	ProjectSection(SolutionItems) = preProject
+		test.cs = test.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDA63DFF-DBEE-4AA0-9F21-CC061244D8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA63DFF-DBEE-4AA0-9F21-CC061244D8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA63DFF-DBEE-4AA0-9F21-CC061244D8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA63DFF-DBEE-4AA0-9F21-CC061244D8CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5021FDD8-2267-40EF-A9F4-C37B22080160}
+	EndGlobalSection
+EndGlobal
