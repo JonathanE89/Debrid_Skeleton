@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Debrid_Skeleton.src
 {
-    internal class test
+    internal class Debrid
     {
+
     }
 }
