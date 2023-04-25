@@ -32,7 +32,7 @@ namespace Debrid_Skeleton
         {
             MessageBox.Show("This is the end of the Debrid. Goodbye!");
             this.Close();
-            process.Kill();
+            //process.Kill();
         }
 
         private void textBox_Link_TextChanged(object sender, EventArgs e)
@@ -50,9 +50,11 @@ namespace Debrid_Skeleton
         {
             System.Diagnostics.Process.Start(e.LinkText);
             process = System.Diagnostics.Process.Start("IExplore.exe", e.LinkText);
+            /*
             this.Link_Textbox_TextChanged.LinkClicked += new
             System.Windows.Forms.LinkClickedEventHandler
-            (this.Link_Textbox_TextChanged);
+            (this.Link_Textbox_TextChanged); 
+            */
         }
     }
 }

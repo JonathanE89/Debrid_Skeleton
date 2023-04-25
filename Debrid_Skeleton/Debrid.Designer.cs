@@ -101,7 +101,7 @@
             Link_Textbox.Size = new Size(227, 29);
             Link_Textbox.TabIndex = 6;
             Link_Textbox.Text = "";
-            Link_Textbox.TextChanged += Link_Textbox_TextChanged;
+            /* Link_Textbox.TextChanged += Link_Textbox_TextChanged; */
             // 
             // Debrid
             // 
