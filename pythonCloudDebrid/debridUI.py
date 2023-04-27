@@ -11,7 +11,7 @@ def find_urls(text):
     return urls
 
 #method that runs the main window
-class MainWindow(QMainWindow):
+class DebridWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Debrid")
@@ -103,6 +103,6 @@ class MainWindow(QMainWindow):
         
 if __name__ == "__main__":
     app = QApplication([])
-    window = MainWindow()
+    window = DebridWindow()
     window.show()
     app.exec()
