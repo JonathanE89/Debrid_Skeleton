@@ -106,7 +106,7 @@ class DebridWindow(QMainWindow):
     #method that calls the accountUI.py function
     def run_accounts(self):
         script_path = os.path.join("pythonCloudDebrid", "accountUI.py")
-        subprocess.run(["python3", script_path])    
+        subprocess.run(["python", script_path])    
         
 if __name__ == "__main__":
     app = QApplication([])
