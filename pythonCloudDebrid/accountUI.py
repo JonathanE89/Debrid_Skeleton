@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser, QLineEdit
 from PySide6.QtCore import QTimer
 
-class AccountWindow(QMainWindow):
+class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Account")
+        self.setWindowTitle("Account: Log In")
         window_width = 400
         window_height = 200
         self.setFixedSize(window_width, window_height)
@@ -70,10 +70,9 @@ class AccountWindow(QMainWindow):
         widget.setLayout(layout)
         self.setCentralWidget(widget)
 
-
         
 if __name__ == "__main__":
     app = QApplication([])
-    window = AccountWindow()
+    window = LoginWindow()
     window.show()
     app.exec()  
