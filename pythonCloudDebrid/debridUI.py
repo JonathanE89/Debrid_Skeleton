@@ -1,4 +1,4 @@
-import re
+import re, os, subprocess
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser
 from PySide6.QtCore import QTimer
 
@@ -50,8 +50,9 @@ class DebridWindow(QMainWindow):
         button_layout.setContentsMargins(0, 0, 0, 0)
 
         # Add button 1
-        button_1 = QPushButton("Button 1")
+        button_1 = QPushButton("Accounts")
         button_layout.addWidget(button_1)
+        button_1.clicked.connect(self.run_accounts)
 
         # Add spacer item to evenly distribute buttons
         button_layout.addStretch()
@@ -89,6 +90,7 @@ class DebridWindow(QMainWindow):
         # Start timer with 1000 ms interval (1 second)
         self.timer.start(1000)
     
+    #Method to Parse Text for the Debrid
     def parseText(self):
             # Get the text from the text_box
             input_text = self.text_box.toPlainText()
@@ -100,6 +102,11 @@ class DebridWindow(QMainWindow):
             # Add the text to the content_box using a QLabel
             parsed_urls = ''.join(f'<p><a href="{url}">{url}</a></p>' for url in parsed_text)
             self.content_label.setHtml(parsed_urls)
+        
+    #method that calls the accountUI.py function
+    def run_accounts(self):
+        script_path = os.path.join("pythonCloudDebrid", "accountUI.py")
+        subprocess.run(["python3", script_path])    
         
 if __name__ == "__main__":
     app = QApplication([])

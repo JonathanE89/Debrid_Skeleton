@@ -8,6 +8,10 @@ class AccountWindow(QMainWindow):
         self.setFixedSize(self.size())
         layout = QVBoxLayout()
 
+        # Add a text box
+        self.text_box = QTextEdit()
+        self.text_box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        layout.addWidget(self.text_box, 1)
 
         
 if __name__ == "__main__":
