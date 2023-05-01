@@ -1,6 +1,11 @@
+from userData import UserData
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser, QLineEdit
 from PySide6.QtCore import QTimer
+
+#Initialize UserData in Accounts Form 
+#NOTE: MISSING AccountSettings for Security Features
+activeUser = UserData()
 
 #Register Window for Accounts User Interface
 class RegisterWindow(QMainWindow):
@@ -159,6 +164,10 @@ class LoginWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(layout)
         self.setCentralWidget(widget)
+    
+    #Allows the User to Log-In (store active user data)
+    def loginUser(self, username, password):
+        return "this is incomplete"
 
 class AccountWindow(QMainWindow):
     def __init__(self):

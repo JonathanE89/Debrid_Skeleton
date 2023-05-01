@@ -1,19 +1,12 @@
-import findDownloads
+import debrid
 from accountUI import launch_AccountWindow
-import re, os, subprocess
+
+import os, subprocess
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser
 from PySide6.QtCore import QTimer
 
-'''#method that uses regular expressions to find all the URLs in a text and return them as an array
-def find_urls(text):
-    urls = []
-    pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
-    for url in re.findall(pattern, text):
-        urls.append(url)
-    return urls'''
-
 #Creates an Instance to Find Download Links
-find_dl = findDownloads.FindDownloads()
+debrid = debrid.Debrid()
 
 #method that runs the main window
 class DebridWindow(QMainWindow):
@@ -65,8 +58,15 @@ class DebridWindow(QMainWindow):
         button_layout.addStretch()
 
         # Add button 2
-        button_2 = QPushButton("Database")
+        button_2 = QPushButton("Set Path")
         button_layout.addWidget(button_2)
+        
+        # Add spacer item to evenly distribute buttons
+        button_layout.addStretch()
+
+        # Add button 2
+        button_3 = QPushButton("Database")
+        button_layout.addWidget(button_3)
 
         # Add horizontal frame separator between link_box and buttons
         separator = QFrame()
@@ -94,7 +94,7 @@ class DebridWindow(QMainWindow):
     def parseText(self):
             # Get the text from the text_box
             input_text = self.text_box.toPlainText()
-            parsed_text = find_dl.find_all_downloads(input_text)
+            parsed_text = debrid.find_all_downloads(input_text)
 
             # Testing Input
             #print(parsed_text)

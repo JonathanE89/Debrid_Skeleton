@@ -1,9 +1,13 @@
+import targetPath
 import re
 import requests
 from bs4 import BeautifulSoup
 
+#Initialize a Target Path Object
+#NOTE: CURRENTLY NOT INTEGRATED WITH ANYTHING 
+activePath = targetPath.TargetPath()
 
-class FindDownloads:
+class Debrid:
     def __init__(self):
         # Finds a Method for the site based on the URL
         self.site_methods = {
@@ -81,7 +85,6 @@ class FindDownloads:
         return list(all_download_links)
 
 
-
 # Method that uses regular expressions to find all the URLs in a text and return them as an array
 def find_urls(text):
     urls = []
@@ -93,7 +96,7 @@ def find_urls(text):
 
 '''# Example usage
 text = "hey guys I found this cool website https://archive.org/details/quake-3-arena you should check it out"
-finder = FindDownloads()
+finder = Debrid()
 downloads = finder.find_all_downloads(text)
 print(downloads)'''
 
