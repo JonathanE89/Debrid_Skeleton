@@ -1,3 +1,5 @@
+import accountUI
+from accountUI import launch_AccountWindow
 import re, os, subprocess
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser
 from PySide6.QtCore import QTimer
@@ -52,7 +54,7 @@ class DebridWindow(QMainWindow):
         # Add button 1
         button_1 = QPushButton("Accounts")
         button_layout.addWidget(button_1)
-        button_1.clicked.connect(self.run_accounts)
+        button_1.clicked.connect(launch_AccountWindow)
 
         # Add spacer item to evenly distribute buttons
         button_layout.addStretch()
@@ -107,8 +109,6 @@ class DebridWindow(QMainWindow):
     def run_accounts(self):
         script_path = os.path.join("pythonCloudDebrid", "accountUI.py")
         subprocess.run(["python", script_path])    
-
-
 
 if __name__ == "__main__":
     app = QApplication([])

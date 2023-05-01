@@ -257,13 +257,13 @@ if __name__ == "__main__":
 '''
 
 #Test First Window
-def launch_AccountWindow():      
-    if __name__ == "__main__":
-        app = QApplication([])
+def launch_AccountWindow(app):      
+    #if __name__ == "__main__":
+        #app = QApplication([])
         window = AccountWindow()
         window.show()
         app.exec()
 
 #Actual Executed Code 
-launch_AccountWindow()
+#launch_AccountWindow()
 
