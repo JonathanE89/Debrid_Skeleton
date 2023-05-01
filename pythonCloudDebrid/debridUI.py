@@ -1,23 +1,28 @@
-import accountUI
+import findDownloads
 from accountUI import launch_AccountWindow
 import re, os, subprocess
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser
 from PySide6.QtCore import QTimer
 
-#method that uses regular expressions to find all the URLs in a text and return them as an array
+'''#method that uses regular expressions to find all the URLs in a text and return them as an array
 def find_urls(text):
     urls = []
     pattern = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     for url in re.findall(pattern, text):
         urls.append(url)
-    return urls
+    return urls'''
+
+#Creates an Instance to Find Download Links
+find_dl = findDownloads.FindDownloads()
 
 #method that runs the main window
 class DebridWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Debrid")
-        self.setFixedSize(self.size())
+        window_width = 500
+        window_height = 400
+        self.setFixedSize(window_width, window_height)
         layout = QVBoxLayout()
 
         # Add a text box
@@ -60,15 +65,8 @@ class DebridWindow(QMainWindow):
         button_layout.addStretch()
 
         # Add button 2
-        button_2 = QPushButton("Button 2")
+        button_2 = QPushButton("Database")
         button_layout.addWidget(button_2)
-
-        # Add spacer item to evenly distribute buttons
-        button_layout.addStretch()
-
-        # Add button 3
-        button_3 = QPushButton("Button 3")
-        button_layout.addWidget(button_3)
 
         # Add horizontal frame separator between link_box and buttons
         separator = QFrame()
@@ -96,7 +94,7 @@ class DebridWindow(QMainWindow):
     def parseText(self):
             # Get the text from the text_box
             input_text = self.text_box.toPlainText()
-            parsed_text = find_urls(input_text)
+            parsed_text = find_dl.find_all_downloads(input_text)
 
             # Testing Input
             #print(parsed_text)
@@ -105,8 +103,9 @@ class DebridWindow(QMainWindow):
             parsed_urls = ''.join(f'<p><a href="{url}">{url}</a></p>' for url in parsed_text)
             self.content_label.setHtml(parsed_urls)
         
-    #method that calls the accountUI.py function
+    #old method that calls the accountUI.py function
     def run_accounts(self):
+        # OUTDATED & UNNECESSARY # 
         script_path = os.path.join("pythonCloudDebrid", "accountUI.py")
         subprocess.run(["python", script_path])    
 
