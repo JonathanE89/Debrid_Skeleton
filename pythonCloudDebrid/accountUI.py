@@ -1,6 +1,6 @@
 from userData import UserData
-import sys, re
-from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QLabel, QHBoxLayout, QPushButton, QSplitter, QFrame, QScrollArea, QLayout, QTextBrowser, QLineEdit, QMessageBox
+import re
+from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QLabel, QHBoxLayout, QPushButton, QFrame, QLineEdit, QMessageBox
 from PySide6.QtCore import QTimer
 
 #Initialize UserData in Accounts Form 
@@ -181,7 +181,7 @@ class LoginWindow(QMainWindow):
         # Add button 1
         button_1 = QPushButton("Log In")
         button_layout.addWidget(button_1)
-        button_1.clicked.connect(self.loginUser)
+        button_1.clicked.connect(self.login_user)
 
         # Add spacer item to evenly distribute buttons
         button_layout.addStretch()
@@ -207,7 +207,7 @@ class LoginWindow(QMainWindow):
         self.setCentralWidget(widget)
     
     #Allows the User to Log-In (store active user data)
-    def loginUser(self):
+    def login_user(self):
         username = self.username_box.text()
         password = self.password_box.text()
         with open('pythonCloudDebrid/acc/users.dat', 'r') as f:
@@ -288,7 +288,7 @@ class AccountWindow(QMainWindow):
         # Add button 1 (Log Out)
         self.logout_button = QPushButton("Log Out")
         button_layout.addWidget(self.logout_button)
-        self.logout_button.clicked.connect(self.logoutUser)
+        self.logout_button.clicked.connect(self.logout_user)
         self.logout_button.hide()
 
         # Add spacer item to evenly distribute buttons
@@ -314,18 +314,22 @@ class AccountWindow(QMainWindow):
         self.timer.start(1000)
 
     #Allows the User to Log-Out (remove active user data)
-    def logoutUser(self):
+    def logout_user(self):
         activeUser.log_out()
 
+    #Updates the Username Field in the AccountWindow
     def update_username_box(self):
-        self.username_box.setText(activeUser.showUser())
+        self.username_box.setText(activeUser.show_user())
 
+    #Shows LoginWindow
     def show_login_window(self):
         self.login_window.show()
 
+    #Shows RegisterWindow
     def show_register_window(self):
         self.register_window.show()
 
+    #Updates the Login Button to say Logout if the User is Logged In
     def update_login_button(self):
         if self.username_box.text() == "No User Detected":
             self.login_button.show()

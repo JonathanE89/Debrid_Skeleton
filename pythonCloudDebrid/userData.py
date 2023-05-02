@@ -24,7 +24,7 @@ class UserData:
         self.password = None
         
     # Method to show the username of the logged-in user
-    def showUser(self):
+    def show_user(self):
         if self.logged_in:
             return self.username
         else:

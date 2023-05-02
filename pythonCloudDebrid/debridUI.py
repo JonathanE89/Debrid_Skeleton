@@ -1,7 +1,7 @@
 import debrid
 from accountUI import launch_AccountWindow
 
-import os, subprocess, requests
+import os, requests
 from PySide6.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QSizePolicy, QHBoxLayout, QPushButton, QFrame, QScrollArea, QTextBrowser, QFileDialog
 from PySide6.QtCore import QTimer, QThread
 
@@ -60,7 +60,7 @@ class DebridWindow(QMainWindow):
         # Add button 2
         button_2 = QPushButton("Set Path")
         button_layout.addWidget(button_2)
-        button_2.clicked.connect(self.selectTargetPath)
+        button_2.clicked.connect(self.select_target_path)
         
         # Add spacer item to evenly distribute buttons
         button_layout.addStretch()
@@ -68,7 +68,7 @@ class DebridWindow(QMainWindow):
         # Add button 4
         button_3 = QPushButton("Download to Path")
         button_layout.addWidget(button_3)
-        button_3.clicked.connect(self.downloadToPath)
+        button_3.clicked.connect(self.download_to_path)
         
         # Add spacer item to evenly distribute buttons
         button_layout.addStretch()
@@ -93,14 +93,14 @@ class DebridWindow(QMainWindow):
         # Create timer object
         self.timer = QTimer(self)
         
-        # Connect timer to parseText method
-        self.timer.timeout.connect(self.parseText)
+        # Connect timer to parse_text method
+        self.timer.timeout.connect(self.parse_text)
         
         # Start timer with 1000 ms interval (1 second)
         self.timer.start(1000)
     
     #Method to Parse Text for the Debrid
-    def parseText(self):
+    def parse_text(self):
             # Get the text from the text_box
             input_text = self.text_box.toPlainText()
             parsed_text = debrid.find_all_downloads(input_text)
@@ -113,7 +113,7 @@ class DebridWindow(QMainWindow):
             self.content_label.setHtml(parsed_urls)
     
     #Method to Select a Target File    
-    def selectTargetPath(self):
+    def select_target_path(self):
         target_directory = QFileDialog.getExistingDirectory(self, "Select Target Directory")
         if target_directory:
             debrid.set_download_path(target_directory)
@@ -122,7 +122,7 @@ class DebridWindow(QMainWindow):
             print("No directory selected")
     
     # Method to download files to the specified target path
-    def downloadToPath(self):
+    def download_to_path(self):
         print("Trying to Download to Path")
         input_text = self.text_box.toPlainText()
         download_links = debrid.find_all_downloads(input_text)
