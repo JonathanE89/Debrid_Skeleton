@@ -1,4 +1,4 @@
-# Cloud Debrid
+# (Python) Cloud Debrid
 - Last Updated: May 1st, 2023
     
 # NOTE:
