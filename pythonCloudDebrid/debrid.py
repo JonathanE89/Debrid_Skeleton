@@ -1,20 +1,24 @@
 import targetPath
-import re
-import requests
+import re, requests, os
 from bs4 import BeautifulSoup
-
-#Initialize a Target Path Object
-#NOTE: CURRENTLY NOT INTEGRATED WITH ANYTHING 
-activePath = targetPath.TargetPath()
 
 class Debrid:
     def __init__(self):
+        
+        #Initialize a Target Path Object
+        #NOTE: CURRENTLY NOT INTEGRATED WITH ANYTHING 
+        self.activePath = targetPath.TargetPath()
+        
         # Finds a Method for the site based on the URL
         self.site_methods = {
             "drive.google.com": self.get_google_drive_direct_download_link,
             "archive.org": self.get_archive_org_download_links,
             "github.com": self.find_github_downloads
         }
+
+    #Sets the Path for the Debrid:
+    def set_download_path(self, url):
+        self.activePath.set_path(url)
 
     # Figures out Which Site to Download From
     def get_site(self, url):
@@ -34,7 +38,7 @@ class Debrid:
         if match:
             file_id = match.group(1)
             direct_download_link = f'https://drive.google.com/uc?export=download&id={file_id}'
-            return direct_download_link
+            return [direct_download_link]  # Wrap the direct_download_link in a list
         else:
             raise ValueError("Invalid Google Drive URL")
 
@@ -45,10 +49,12 @@ class Debrid:
         links = soup.find_all('a')
 
         download_links = []
+        base_url = "https://archive.org"
         for link in links:
             href = link.get('href')
             if href and (href.endswith('.pdf') or href.endswith('.docx') or href.endswith('.zip') or href.endswith('.mp4') or href.endswith('.torrent')):
-                download_links.append(href)
+                full_url = base_url + href
+                download_links.append(full_url)
 
         return download_links
 
@@ -84,6 +90,46 @@ class Debrid:
 
         return list(all_download_links)
 
+    #Allows the Debrid to downlad Files to a Target Path
+    def download_single_file(self, url):
+        if not self.activePath.get_path():
+            raise ValueError("No active path set. Please set the target path before downloading.")
+
+        local_filename = url.split('/')[-1]
+        target_path = os.path.join(self.activePath.get_path(), local_filename)
+
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(target_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+
+        return local_filename
+
+    # Downloads all Debrid Text to a Given Target Path
+    def download_to_target(self, text):
+        print(f"Downloading to Target Path: {self.activePath.get_path()}")
+        
+        # Check if the active path is set
+        if not self.activePath.get_path():
+            raise ValueError("No active path set. Please set the target path before downloading.")
+
+        # Collect download links
+        download_links = self.find_all_downloads(text)
+
+        # Download each file to the specified path
+        for url in download_links:
+            local_filename = url.split('/')[-1]
+            target_path = os.path.join(self.activePath.get_path(), local_filename)
+
+            with requests.get(url, stream=True) as r:
+                r.raise_for_status()
+                with open(target_path, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=8192):
+                        f.write(chunk)
+
+            print(f"Downloaded {local_filename} to {target_path}")
+    
 
 # Method that uses regular expressions to find all the URLs in a text and return them as an array
 def find_urls(text):

@@ -1,5 +1,3 @@
-# user_data.py
-
 #Establishes the Active User (Singleton)
 class UserData:
     _instance = None
